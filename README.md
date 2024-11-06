@@ -39,4 +39,57 @@ Ketika setState() dipanggil, semua variabel yang terlibat dalam proses rendering
 - menyimpan data yang diperlukan dalam variabel seperti nama, npm, kelas dan menampilkannya di dalam widget.
 - Mengimplementasikan widget InkWell untuk memberikan respons terhadap tindakan pengguna, seperti mengklik tombol atau kartu.
 
+## Tugas 8 Pertanyaan
+1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
 
+Kegunaan: mendefinisikan objek-objek yang bersifat immutable dan dapat diinstansiasi pada waktu kompilasi (compile-time constants).
+Keuntungan:
+- const memungkinkan Flutter untuk membuat satu instance saja dari widget tersebut dan menggunakannya berulang kali
+- Performa lebih baik karena widget dengan const tidak perlu direbuild saat aplikasi menjalankan build method
+Kapan menggunakan const:
+- Gunakan const saat sebuah widget atau objek bersifat tetap (tidak akan diubah).
+- Jangan gunakan const pada objek atau widget yang akan mengalami perubahan state atau parameter.
+
+2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+- Column adalah widget yang menampilkan anak-anaknya dalam urutan vertikal.
+<pre>
+  <code>
+  Column(
+  children: [
+    Text('Ayam 1'),
+    Text('Ayam 2'),
+    Text('Koala 3'),
+  ],
+)
+  </code>
+</pre>
+- Row adalah widget yang menampilkan anak-anaknya dalam urutan horizontal.
+<pre>
+  <code>
+  Row(
+    children: [
+      Icon(Icons.star),
+      Text('Rating: 5'),
+    ],
+  )
+  </code>
+</pre>
+
+3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Yang digunakan pada tugas ini
+- TextFormField
+
+Yang tidak digunakan pada tugas ini
+- TextFormField
+
+4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Pengaturan tema dalam Flutter dilakukan menggunakan widget ThemeData, yang didefinisikan pada MaterialApp. ThemeData memungkinkan kita untuk menetapkan warna, font, dan style konsisten di seluruh aplikasi.
+
+5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+Untuk menangani navigasi pada aplikasi Flutter dengan banyak halaman, digunakan metode:
+
+Navigator dengan metode push, pop, dan pushother 
+Named Routes untuk navigasi yang lebih terstruktur dan mudah dikelola.
