@@ -78,18 +78,22 @@ Kapan menggunakan const:
 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
 
 Yang digunakan pada tugas ini
-- TextFormField
+- TextFormField = Elemen ini digunakan untuk menerima input teks dari pengguna
 
 Yang tidak digunakan pada tugas ini
-- TextFormField
+- DropdownButton = Elemen ini berfungsi sebagai daftar pilihan (drop-down menu) yang memungkinkan pengguna memilih satu opsi dari beberapa pilihan yang tersedia.
+- Check box = Elemen ini memungkinkan pengguna untuk memilih satu atau lebih opsi dari sejumlah pilihan yang bersifat biner (ya atau tidak). 
+- Radio Button = Elemen radio mirip dengan checkbox, namun hanya memungkinkan pengguna memilih satu opsi dari sekelompok opsi. 
 
 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
 
-Pengaturan tema dalam Flutter dilakukan menggunakan widget ThemeData, yang didefinisikan pada MaterialApp. ThemeData memungkinkan kita untuk menetapkan warna, font, dan style konsisten di seluruh aplikasi.
+Pengaturan tema dalam Flutter dilakukan menggunakan ThemeData pada widget MaterialApp memungkinkan kita menciptakan tampilan yang konsisten di seluruh aplikasi. ThemeData adalah kelas yang menyediakan konfigurasi warna, gaya teks, bentuk tombol, ikon, dan elemen UI lainnya yang bisa diterapkan secara global, sehingga setiap komponen otomatis mengikuti gaya yang ditentukan.
 
 5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
 
-Untuk menangani navigasi pada aplikasi Flutter dengan banyak halaman, digunakan metode:
+Navigator bekerja seperti tumpukan (stack), di mana halaman yang terbaru ditempatkan di atas halaman sebelumnya. Kita dapat menambah atau menghapus halaman dari stack dengan metode push dan pop.
+- push: Menambahkan halaman baru ke atas stack. Halaman sebelumnya tetap ada di memori, sehingga kita bisa kembali ke sana menggunakan pop.
+- pop: Menghapus halaman yang sedang ditampilkan dari stack dan kembali ke halaman sebelumnya.
+- pushReplacement: Mengganti halaman saat ini dengan halaman baru tanpa menyimpan halaman sebelumnya di stack, sehingga pengguna tidak dapat kembali ke halaman lama.
 
-Navigator dengan metode push, pop, dan pushother 
-Named Routes untuk navigasi yang lebih terstruktur dan mudah dikelola.
+Named Routes juga dapat digunakan jika aplikasi memiliki banyak halaman dan ingin manajemen navigasi yang lebih terorganisir, sehingga lebih mudah diatur, terutama ketika aplikasi bertambah besar.
