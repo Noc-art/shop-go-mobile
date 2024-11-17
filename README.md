@@ -39,4 +39,61 @@ Ketika setState() dipanggil, semua variabel yang terlibat dalam proses rendering
 - menyimpan data yang diperlukan dalam variabel seperti nama, npm, kelas dan menampilkannya di dalam widget.
 - Mengimplementasikan widget InkWell untuk memberikan respons terhadap tindakan pengguna, seperti mengklik tombol atau kartu.
 
+## Tugas 8 Pertanyaan
+1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
 
+Kegunaan: mendefinisikan objek-objek yang bersifat immutable dan dapat diinstansiasi pada waktu kompilasi (compile-time constants).
+Keuntungan:
+- const memungkinkan Flutter untuk membuat satu instance saja dari widget tersebut dan menggunakannya berulang kali
+- Performa lebih baik karena widget dengan const tidak perlu direbuild saat aplikasi menjalankan build method
+Kapan menggunakan const:
+- Gunakan const saat sebuah widget atau objek bersifat tetap (tidak akan diubah).
+- Jangan gunakan const pada objek atau widget yang akan mengalami perubahan state atau parameter.
+
+2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+- Column adalah widget yang menampilkan anak-anaknya dalam urutan vertikal.
+<pre>
+  <code>
+  Column(
+  children: [
+    Text('Ayam 1'),
+    Text('Ayam 2'),
+    Text('Koala 3'),
+  ],
+)
+  </code>
+</pre>
+- Row adalah widget yang menampilkan anak-anaknya dalam urutan horizontal.
+<pre>
+  <code>
+  Row(
+    children: [
+      Icon(Icons.star),
+      Text('Rating: 5'),
+    ],
+  )
+  </code>
+</pre>
+
+3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Yang digunakan pada tugas ini
+- TextFormField = Elemen ini digunakan untuk menerima input teks dari pengguna
+
+Yang tidak digunakan pada tugas ini
+- DropdownButton = Elemen ini berfungsi sebagai daftar pilihan (drop-down menu) yang memungkinkan pengguna memilih satu opsi dari beberapa pilihan yang tersedia.
+- Check box = Elemen ini memungkinkan pengguna untuk memilih satu atau lebih opsi dari sejumlah pilihan yang bersifat biner (ya atau tidak). 
+- Radio Button = Elemen radio mirip dengan checkbox, namun hanya memungkinkan pengguna memilih satu opsi dari sekelompok opsi. 
+
+4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Pengaturan tema dalam Flutter dilakukan menggunakan ThemeData pada widget MaterialApp memungkinkan kita menciptakan tampilan yang konsisten di seluruh aplikasi. ThemeData adalah kelas yang menyediakan konfigurasi warna, gaya teks, bentuk tombol, ikon, dan elemen UI lainnya yang bisa diterapkan secara global, sehingga setiap komponen otomatis mengikuti gaya yang ditentukan.
+
+5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+Navigator bekerja seperti tumpukan (stack), di mana halaman yang terbaru ditempatkan di atas halaman sebelumnya. Kita dapat menambah atau menghapus halaman dari stack dengan metode push dan pop.
+- push: Menambahkan halaman baru ke atas stack. Halaman sebelumnya tetap ada di memori, sehingga kita bisa kembali ke sana menggunakan pop.
+- pop: Menghapus halaman yang sedang ditampilkan dari stack dan kembali ke halaman sebelumnya.
+- pushReplacement: Mengganti halaman saat ini dengan halaman baru tanpa menyimpan halaman sebelumnya di stack, sehingga pengguna tidak dapat kembali ke halaman lama.
+
+Named Routes juga dapat digunakan jika aplikasi memiliki banyak halaman dan ingin manajemen navigasi yang lebih terorganisir, sehingga lebih mudah diatur, terutama ketika aplikasi bertambah besar.
