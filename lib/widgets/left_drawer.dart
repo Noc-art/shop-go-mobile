@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_go/screens/menu.dart';
 import 'package:shop_go/screens/productentry_form.dart';
 
+import '../screens/list_productentry.dart';
+
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
 
@@ -60,6 +62,16 @@ class LeftDrawer extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => ProductEntryFormPage(),
                   ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text('Daftar Product'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductEntryPage()),
+              );
             },
           ),
         ],
