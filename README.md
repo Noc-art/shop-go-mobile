@@ -139,5 +139,5 @@ a. Tambahkan fitur autentikasi di aplikasi flutter yang sebelumnya dibuat </br>
 b. Lakukan integrasi data autentikasi dengan CookieRequest </br>
 c. Tampilkan data produk pada halaman list produk </br>
 d. Tambahkan design card di setiap produk yang nantinya bisa di klik untuk menampilkan data detail produk tersebut dan tambahkan button kembali ke list produk yang ada. </br>
-e. Buat autentikasi logout untuk proyek flutter anda. 
+e. Buat autentikasi logout untuk proyek flutter. 
 </p>
