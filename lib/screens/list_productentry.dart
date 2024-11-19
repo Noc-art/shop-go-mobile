@@ -3,6 +3,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_go/models/product_entry.dart';
 import 'package:shop_go/widgets/left_drawer.dart';
+import 'package:shop_go/screens/product_detail.dart'; // Import the detail page
 
 class ProductEntryPage extends StatefulWidget {
   const ProductEntryPage({super.key});
@@ -13,10 +14,8 @@ class ProductEntryPage extends StatefulWidget {
 
 class _ProductEntryPageState extends State<ProductEntryPage> {
   Future<List<Product>> fetchProduct(CookieRequest request) async {
-    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
     final response = await request.get('http://127.0.0.1:8000/json/');
 
-    // Melakukan decode response menjadi bentuk json
     var data = response;
 
     List<Product> listProduct = [];
@@ -56,11 +55,21 @@ class _ProductEntryPageState extends State<ProductEntryPage> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (_, index) => Container(
-                  margin:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -71,11 +80,21 @@ class _ProductEntryPageState extends State<ProductEntryPage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.price}"),
+                      Text("Price: \$${snapshot.data![index].fields.price}"),
                       const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.description}"),
-                      const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.stock}")
+                      ElevatedButton(
+                        onPressed: () {
+                          // Navigate to ProductDetailPage
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductDetailPage(product: snapshot.data![index]),
+                            ),
+                          );
+                        },
+                        child: const Text('See Details'),
+                      ),
                     ],
                   ),
                 ),
