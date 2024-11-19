@@ -97,3 +97,47 @@ Navigator bekerja seperti tumpukan (stack), di mana halaman yang terbaru ditempa
 - pushReplacement: Mengganti halaman saat ini dengan halaman baru tanpa menyimpan halaman sebelumnya di stack, sehingga pengguna tidak dapat kembali ke halaman lama.
 
 Named Routes juga dapat digunakan jika aplikasi memiliki banyak halaman dan ingin manajemen navigasi yang lebih terorganisir, sehingga lebih mudah diatur, terutama ketika aplikasi bertambah besar.
+
+## Tugas 9 Pertanyaan
+
+1. Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu? </br>
+<p>
+Seperti yang kita tahu, bahwa struktur dan tipe data yang disimpan diserver menjadi hal yang penting untuk diketahui, maka dari itu struktur dan tipe data ini kita implementasikan dalam bentuk model. Memang membuat model bukanlah suatu keharusan namun <b>sangat disarankan</b> karena deklarasi struktur dan validasi data yang jelas. Hal ini memudahkan developer untuk mengelola data tersebut. </br>
+
+Jika kita tidak membuat model, tidak akan selalu memunculkan error namun seringkali adanya kasus ketidaksuaian format data sehingga kita kesulitan dalam memvalidasi data karema seiring waktu struktur data terus berganti namun tidak ada acuan struktur data yang pasti, sehingga skalabilitas program pun menjadi menurun. </br></p>
+
+2. Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini </br>
+<p>
+HTTP merupakan library yang digunakan untuk melakukan komunikasi antara HTTP dengan server dimana terjadi pengiriman dan penerimaan data melalui API. Integrasi antara backend dan flutter  terjadi dengan menggunakan library HTTP untuk mengakses data, mengirim data atau operasi lain yang memerlukan koneksi internet. </br>
+</p>
+
+3. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter </br>
+<p>
+CookieRequest adalah class untuk menangani sesi pengguna berdasarkan cookie untuk komunikasi aplikasi dan server contohnya berupa otentikasi, status login, dll. CookieRequest sendiri memiliki beberapa fungsi utama diantaranya yaitu, menyimpan cookie, mengotomisasi sesi login, mendukung otentikasi dan autorisasi serta membantu meringankan beban kerja server karena cookie sebelumnya sudah pernah ada di server tinggal dipanggil dengan CookieRequest saja sehingga server bisa berjalan dengan lebih cepat dan efisien. </br>
+</p>
+
+4. Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter. </br>
+<p>
+a. Data diambil melalui widget input seperti TextField, TextFormField, dll yang kemudian divalidasi dengan beberapa kriteria tertentu seperti panjang karakter, dll sebelum dikirim ke server. </br>
+b. Setelah data tervalidasi, data akan dikirimkan ke server menggunakan HTTP Request dan format data akan berubah menjadi format JSON apabila ditambahkan penggunaan dart::convert </br>
+c. Di Backend terjadi penerimaan data dan server akan mengirimkan respon berupa kode berhasil seperti 200 atau kode gagal seperti 400 atau 500</br>
+d. Respon dari server diubah(deserialisasi) dari JSON menjadi objek dart agar bisa diimplementasikan di aplikasi
+e. State akan menerima data baru dari server yang kemudian akan ditampilkan pada UI aplikasi. </br>
+</p>
+
+5. Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter. </br>
+<p>
+a. Lakukan registrasi di aplikasi flutter jika sebelumnya anda belum memiliki akun, data yang telah diinput akan divalidasi secara lokal di server lokal anda yang kemudian akan dikirimkan ke server django dengan method POST. Server akan memproses user dan memberikan respon terkait gagal atau berhasil proses ini.</br>
+b. Setelah register berhasil, anda dapat melakukan login akun sesuai dengan username dan password yang anda daftarkan di register yang selanjutnya akan divalidasi secara lokal di server anda kemudian dikirimkan lagi ke server untuk dicocokkan datanya. Jika berhasil, server akan memberikan token/session di flutter dan pengguna akan masuk ke menu utama</br>
+c. Setelah anda berhasil masuk ke menu utama akan tampil berbagai data aplikasi anda dan jika sudah selesai, anda dapat melakukan logout dengan mengirimkan request logout ke django dan aplikasi akan di navigasikan kembali ke keluar dari aplikasi atau pun ke halaman login sesuai dengan ketentuan yang anda tetapkan pada kode anda.
+</p>
+
+
+6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial). </br>
+<p>
+a. Tambahkan fitur autentikasi di aplikasi flutter yang sebelumnya dibuat </br>
+b. Lakukan integrasi data autentikasi dengan CookieRequest </br>
+c. Tampilkan data produk pada halaman list produk </br>
+d. Tambahkan design card di setiap produk yang nantinya bisa di klik untuk menampilkan data detail produk tersebut dan tambahkan button kembali ke list produk yang ada. </br>
+e. Buat autentikasi logout untuk proyek flutter anda. 
+</p>
